@@ -1,0 +1,65 @@
+{
+    "$defs": {
+        "Example": {
+            "properties": {
+                "id": {
+                    "description": "The unique identifier",
+                    "title": "Id",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Example",
+            "type": "object"
+        },
+        "Person": {
+            "properties": {
+                "name": {
+                    "description": "The person's name",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "age": {
+                    "description": "The person's age in years",
+                    "minimum": 0,
+                    "title": "Age",
+                    "type": "integer"
+                },
+                "example": {
+                    "$ref": "#/$defs/Example"
+                }
+            },
+            "required": [
+                "name",
+                "age",
+                "example"
+            ],
+            "title": "Person",
+            "type": "object"
+        }
+    },
+    "properties": {
+        "author": {
+            "description": "The author of the method",
+            "title": "Author",
+            "type": "string"
+        },
+        "method_name": {
+            "description": "The name of the method",
+            "title": "Method Name",
+            "type": "string"
+        },
+        "person": {
+            "$ref": "#/$defs/Person"
+        }
+    },
+    "required": [
+        "author",
+        "method_name",
+        "person"
+    ],
+    "title": "Method",
+    "type": "object"
+}

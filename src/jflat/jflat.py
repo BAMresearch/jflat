@@ -1,67 +1,25 @@
 from typing import Any, Dict
-from pydantic import BaseModel, Field
 
 
-class JFlat:
+def flatten_json(data: Dict[str, Any], parent_key: str = "") -> Dict[str, Any]:
     """
-    A tiny helper class that accepts a nested JSON-like dictionary
-    and flattens it into a single-level dictionary.
+    Flatten a nested JSON-like dictionary into a flat dictionary
+    using underscore-separated keys.
 
     Example:
         {"person": {"name": "Alice"}}
-        becomes:
+    becomes:
         {"person_name": "Alice"}
     """
+    result: Dict[str, Any] = {}
 
-    def __init__(self, input_json: Dict[str, Any]):
-        if not isinstance(input_json, dict):
-            raise ValueError("JFlat only accepts dictionaries.")
-        self.input_json = input_json
+    for key, value in data.items():
+        new_key = f"{parent_key}_{key}" if parent_key else key
 
-    def flatten(self) -> Dict[str, Any]:
-        flat_dict: Dict[str, Any] = {}
-        self._flatten_recursive(self.input_json, parent_key="", output=flat_dict)
-        return flat_dict
-
-    def _flatten_recursive(self, obj: Any, parent_key: str, output: Dict[str, Any]):
-        if isinstance(obj, dict):
-            for key, value in obj.items():
-                new_key = f"{parent_key}_{key}" if parent_key else key
-                self._flatten_recursive(value, new_key, output)
+        if isinstance(value, dict):
+            # Recursively flatten child dictionaries
+            result.update(flatten_json(value, new_key))
         else:
-            output[parent_key] = obj
+            result[new_key] = value
 
-
-# ================================================================
-#  PART 3 — DEMO EXECUTION
-# ================================================================
-if __name__ == "__main__":
-    print("\n=== Pydantic -> JSON SCHEMA ===")
-    schema = Method.model_json_schema()
-    print(schema)
-
-    print("\n=== Nested JSON produced by Pydantic ===")
-    method_instance = Method(
-        author="Maxim",
-        method_name="FlattenSchema",
-        person=Person(
-            name="Christopher Nolan",
-            age=50,
-            example=Example(id="XYZ123")
-        )
-    )
-
-    nested_json = method_instance.model_dump()
-    print(nested_json)
-
-    print("\n=== Flattened using JFlat ===")
-    flat = JFlat(nested_json).flatten()
-    print(flat)
-
-
-
-
-
-
-
-
+    return result
