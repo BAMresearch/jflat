@@ -1,48 +1,6 @@
-"""
-execute : python jflat_demo.py
-
-PROJECT JFLAT — Unified Demo Script
------------------------------------
-
-This script shows:
-1. How Pydantic creates nested JSON and JSON schemas
-2. How JFlat flattens nested JSON
-3. A teachable prototype for students and non-programmers
-
-Run with:
-    python jflat_demo.py
-"""
-
 from typing import Any, Dict
 from pydantic import BaseModel, Field
 
-
-# ================================================================
-#  PART 1 — PYDANTIC MODELS (your examples)
-# ================================================================
-
-class Example(BaseModel):
-    id: str = Field(..., description="The unique identifier")
-
-
-class Person(BaseModel):
-    name: str = Field(..., description="The person's name")
-    age: int = Field(..., ge=0, description="The person's age in years")
-    example: Example
-
-
-class BaseMethod(BaseModel):
-    author: str = Field(..., description="The author of the method")
-
-
-class Method(BaseMethod):
-    method_name: str = Field(..., description="The name of the method")
-    person: Person
-
-
-# ================================================================
-#  PART 2 — JFlat: A JSON flattener
-# ================================================================
 
 class JFlat:
     """
