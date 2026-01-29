@@ -1,3 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
 
+[project]
+name = "jflat"
+version = "0.1.0"
+description = "Utility functions to flatten nested JSON into a flat dictionary."
+readme = "README.md"
+authors = [
+    { name = "Maxim Köppel" }
+]
+requires-python = ">=3.10"
+
+dependencies = [
+    "pydantic>=2.0"
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+]
+
+[project.urls]
+repository = "https://github.com/BAMResearch/jflat"
+homepage = "https://github.com/BAMResearch/jflat"
+
+[tool.pytest.ini_options]
+pythonpath = [
+    "src"
+]
 
 
