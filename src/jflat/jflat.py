@@ -23,3 +23,9 @@ def flatten_json(data: Dict[str, Any], parent_key: str = "") -> Dict[str, Any]:
             result[new_key] = value
 
     return result
+
+
+
+
+def flatten_json_schema():
+    pass
