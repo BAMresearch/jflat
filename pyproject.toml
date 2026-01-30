@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=61.0.0", "wheel"]
+requires = ["setuptools>=61.0.0", "wheel", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "jflat"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Utility functions to flatten nested JSON into a flat dictionary."
 readme = "README.md"
 authors = [
@@ -25,7 +25,6 @@ classifiers = [
 repository = "https://github.com/BAMResearch/jflat"
 homepage = "https://github.com/BAMResearch/jflat"
 
-
 [tool.setuptools]
 package-dir = { "" = "src" }
 
@@ -35,8 +34,7 @@ where = ["src"]
 [tool.setuptools_scm]
 write_to = "src/jflat/_version.py"
 
-
-
-
-
-
+[tool.pytest.ini_options]
+pythonpath = [
+    "src"
+]
