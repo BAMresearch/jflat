@@ -11,5 +11,5 @@ This JSON Schema is produced by calling `Method.model_json_schema()`, where `Met
 schema = Method.model_json_schema()
 
 with open("schema_json.json", "w") as f:
-    json.dump(schema, f, indent=4)
+    json.dump(schema, f, indent=2)
  
