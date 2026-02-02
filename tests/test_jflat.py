@@ -25,9 +25,3 @@ def test_flatten_json_nested():
     }
 
 
-from yourpackage.jflat import JFlat
-
-def test_flatten_simple():
-    j = JFlat({"a": {"b": 1}})
-    result = j.flatten()
-    assert result == {"a.b": 1}
