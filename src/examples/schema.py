@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 from pydantic import BaseModel, Field
+
 
 # class Example(BaseModel):
 #     id: str = Field(..., description="The unique identifier")
@@ -19,9 +22,6 @@ from pydantic import BaseModel, Field
 #     person: Person
 
 
-from __future__ import annotations
-
-from pydantic import BaseModel, Field
 
 
 class Example(BaseModel):
