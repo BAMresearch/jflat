@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "jflat"
 dynamic = ["version"]
-description = "Utility functions to flatten nested JSON into a flat dictionary."
+description = "Utility functions to simplify/flatten Pydantic JSON Schemas into a compact $defs-based format."
 readme = "README.md"
 authors = [
     { name = "Maxim Köppel" }
