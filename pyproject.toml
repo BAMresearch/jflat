@@ -22,8 +22,8 @@ classifiers = [
 ]
 
 [project.urls]
-repository = "https://github.com/BAMResearch/jflat"
-homepage = "https://github.com/BAMResearch/jflat"
+repository = "https://github.com/BAMresearch/jflat"
+homepage = "https://github.com/BAMresearch/jflat"
 
 [tool.setuptools]
 package-dir = { "" = "src" }

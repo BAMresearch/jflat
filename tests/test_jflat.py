@@ -1,3 +1,11 @@
+from __future__ import annotations
+
+import copy
+
+from jflat import flatten_json_schema
+from examples.schema import Method
+
+
 def test_public_api_import_smoke():
     # If this test passes, it means the package init (__init__.py) is healthy
     # and does not have circular imports.
