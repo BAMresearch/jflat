@@ -1,9 +1,6 @@
 from typing import Any, Optional
 
 
-
-
-
 def flatten_json_schema(
     schema: dict[str, Any],
     *,
